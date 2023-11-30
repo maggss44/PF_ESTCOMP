@@ -13,7 +13,7 @@ ui <- fluidPage(
       # Entradas para los parámetros de predicción
       selectInput("tool", "Tool Used", choices = c("wsp1030", "wsp4240")),
       sliderInput("cutting_depth_ai", "Cutting Depth (in m)", min = 0.0007, max = 0.003, value = 0.001, step = 0.0001),
-      numericInput("tool_diameter_d", "Tool Diameter (in m)", value = 0.04),
+      selectInput("tool_diameter_d", "Tool Diameter (in m)", choices = c("0.04", "0.05")),
       sliderInput("diameter_ae", "Diameter (effective cutting diameter in m)", min = 0.026, max = 0.04, value = 0.032, step = 0.002),
       selectInput("feed_vel_f", "Feed Velocity (in m/s)", choices = c(30.336, 30.3552, 45.5328, 25.296, 0.0158166666666667, 63.24, 37.92, 41.7384, 34.1496, 37.944, 45.504, 41.712, 34.128)),
       selectInput("revol_n", "Revs", choices = c(28.1066666666667, 35.1333333333333, 33.8204254070278, 33.8166666666667, 2108.0, 31.62, 42.16, 38.6466666666667, 35.8166666666667, 35.5)),
