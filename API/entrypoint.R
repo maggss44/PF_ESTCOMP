@@ -2,5 +2,5 @@ library(plumber)
 library(randomForest)
 
 pr <- plumb("plumber.R")
-pr$run(port=8000)
+pr$run(port=8000, host = "0.0.0.0")
 

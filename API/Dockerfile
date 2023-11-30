@@ -9,3 +9,4 @@ WORKDIR /myproject
 EXPOSE 8000
 # Run plumber
 ENTRYPOINT ["Rscript", "entrypoint.R"]
+CMD ["entrypoint.R"]
