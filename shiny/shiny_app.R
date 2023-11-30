@@ -20,8 +20,8 @@ ui <- fluidPage(
       selectInput("num_of_inserts_z", "Num. of Inserts", choices = c(2, 3)),
       selectInput("feet_per_insert_fz", "Feet per Insert (in m)", choices = c(0.0001798861480075, 0.0001323406235458, 0.0001199240986717, 0.000171315919172, 0.0001349146110056, 0.0001557244358485, 0.00015, 0.0001631924882629, 0.0001, 0.00025, 0.0001499051233396)),
       selectInput("cut_vel_vc", "Cutting Velocity", choices = c(15300.0, 14304.5509977373, 16203.0782701547, 17483.3401083456, 0.265, 19072.7346636498, 15298.2995859209, 16059.821645151, 12715.1564424332, 15893.9455530415)),
-      numericInput("time", "Time (in s)", value = 7),
-      numericInput("distance", "distance (in m)", value = 0),
+      sliderInput("time", "Time (in s)", min = 6.432, max = 23.718, value = 15.104, step = 0.001),
+      sliderInput("distance", "distance (in m)", min = 0.0001, max = 572.74368, value = 543.92448, step = 0.01),
       # Agrega más entradas según los parámetros necesarios
       actionButton("predictButton", "Predict")
     ),
