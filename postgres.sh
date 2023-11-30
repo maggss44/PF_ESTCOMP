@@ -10,7 +10,7 @@ if [ "$1" = 'initial' ]; then
 
     echo "###IMPORT DATA###"
     sleep 10
-    python data/import_data.py
+    Rscript data/import_data.R
 else 
     docker start monitoreo_manufactura
 fi
