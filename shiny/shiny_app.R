@@ -1,12 +1,9 @@
-# Instala los paquetes necesarios si no los tienes instalados
-install.packages(c("shiny", "httr"))
-
 library(shiny)
 library(httr)
 
 # Specify the application port
 options(shiny.host = "0.0.0.0")
-options(shiny.port = 8180)
+options(shiny.port = 6789)
 
 # Define la UI de la aplicación Shiny
 ui <- fluidPage(
@@ -14,17 +11,16 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       # Entradas para los parámetros de predicción
-      textInput("tool", "Tool Used", ""),
-      numericInput("cutting_depth_ai", "Cutting Depth (in m)", value = 0),
-      numericInput("tool_diameter_d", "Tool Diameter (in m)", value = 0),
-      numericInput("diameter_ae", "Diameter (efective cutting diameter in m)", value = 0),
-      numericInput("feed_vel_f", "Feed Velocity (in m/s)", value = 0),
-      numericInput("revol_n", "Revs", value = 0),
-      numericInput("num_of_inserts_z", "Num. of Inserts", value = 0),
-      numericInput("feet_per_insert_fz", "Feet per Insert (in m)", value = 0),
-      numericInput("cut_vel_vc", "Cutting Velocity (in m/min)", value = 0),
-      numericInput("power", "Power (in W)", value = 0),
-      numericInput("time", "Time (in s)", value = 0),
+      selectInput("tool", "Tool Used", choices = c("wsp1030", "wsp4240")),
+      sliderInput("cutting_depth_ai", "Cutting Depth (in m)", min = 0.0007, max = 0.003, value = 0.001, step = 0.0001),
+      numericInput("tool_diameter_d", "Tool Diameter (in m)", value = 0.04),
+      sliderInput("diameter_ae", "Diameter (effective cutting diameter in m)", min = 0.026, max = 0.04, value = 0.032, step = 0.002),
+      selectInput("feed_vel_f", "Feed Velocity (in m/s)", choices = c(30.336, 30.3552, 45.5328, 25.296, 0.0158166666666667, 63.24, 37.92, 41.7384, 34.1496, 37.944, 45.504, 41.712, 34.128)),
+      selectInput("revol_n", "Revs", choices = c(28.1066666666667, 35.1333333333333, 33.8204254070278, 33.8166666666667, 2108.0, 31.62, 42.16, 38.6466666666667, 35.8166666666667, 35.5)),
+      selectInput("num_of_inserts_z", "Num. of Inserts", choices = c(2, 3)),
+      selectInput("feet_per_insert_fz", "Feet per Insert (in m)", choices = c(0.0001798861480075, 0.0001323406235458, 0.0001199240986717, 0.000171315919172, 0.0001349146110056, 0.0001557244358485, 0.00015, 0.0001631924882629, 0.0001, 0.00025, 0.0001499051233396)),
+      selectInput("cut_vel_vc", "Cutting Velocity", choices = c(15300.0, 14304.5509977373, 16203.0782701547, 17483.3401083456, 0.265, 19072.7346636498, 15298.2995859209, 16059.821645151, 12715.1564424332, 15893.9455530415)),
+      numericInput("time", "Time (in s)", value = 7),
       numericInput("distance", "distance (in m)", value = 0),
       # Agrega más entradas según los parámetros necesarios
       actionButton("predictButton", "Predict")
@@ -50,7 +46,6 @@ server <- function(input, output) {
       num_of_inserts_z = input$num_of_inserts_z,
       feet_per_insert_fz = input$feet_per_insert_fz,
       cut_vel_vc = input$cut_vel_vc,
-      power = input$power,
       time = input$time,
       distance = input$distance
       # Agrega más parámetros según corresponda

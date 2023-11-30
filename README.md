@@ -8,7 +8,7 @@ _SET UP_
 - tener el _Docker daemon_ corriendo
 - tener el .env en la carpeta pricipal del proyecto
 
-* (para hacer ejecutable _postgres.sh_ ejecutar en terminal `chmod +x app.sh`)
+* (para hacer ejecutable _postgres.sh_ ejecutar en terminal `chmod +x postgres.sh`)
 * para abrir conecxión con el postgre ejecutar `bash postgres.sh` (Si es la primera vez que se ejecutará se tienen que cargar los datos con `bash postgres.sh initial`)
 
 ## R(modelo de ml, API y Shiny)
