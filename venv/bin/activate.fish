@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/carlosmayorga/github/itam/PF_ESTCOMP/venv"
+set -gx VIRTUAL_ENV "/Users/lau_shang/Documents/ITAM/otono_2023/fundamentos_computacionales/PF_ESTCOMP/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

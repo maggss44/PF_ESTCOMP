@@ -1,4 +1,4 @@
-#!/Users/carlosmayorga/github/itam/PF_ESTCOMP/venv/bin/python
+#!/Users/lau_shang/Documents/ITAM/otono_2023/fundamentos_computacionales/PF_ESTCOMP/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
