@@ -1,7 +1,7 @@
 library(plumber)
 library(randomForest)
 
-model <- readRDS("../models/modelo_entrenado.rds")
+model <- readRDS("modelo_entrenado.rds")
 
 #* @apiTitle RF API
 #* @apiDescription Plumber API for Random Forest model to predict energy required given the parameters given.
