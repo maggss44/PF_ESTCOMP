@@ -1,12 +1,10 @@
 # Parent image
-FROM rstudio/plumber:v1.1.0
+FROM rstudio/plumber:latest
 # Packages
 RUN R -e "install.packages(c('randomForest'), repos='http://cran.rstudio.com/')"
 # Copy the current directory contents into the container at /usr/local/src/app
-COPY . /myproject
-WORKDIR /myproject
+COPY . /app
 # port
-EXPOSE 8000
+EXPOSE 8080
 # Run plumber
-ENTRYPOINT ["Rscript", "entrypoint.R"]
-CMD ["entrypoint.R"]
+CMD ["Rscript", "/app/plumber.R"]

@@ -52,7 +52,7 @@ server <- function(input, output) {
     )
     
     # Realizar la solicitud POST a la API Plumber
-    response <- POST("http://0.0.0.0:8000/energy", body = req_body, encode = "json")
+    response <- POST("web:8080/energy", body = req_body, encode = "json")
     
     # Obtener y mostrar la respuesta
     if (http_status(response)$category == "Success") {
