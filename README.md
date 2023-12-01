@@ -1,6 +1,6 @@
 # DOCKER
-en terminal `docker-compose up`
-para hacer tirar el docker y volver hacer el build de la imagen `docker-compose down` después `docker-compose build --no-cache` y finalmente `docker-compose up`
+* en terminal `docker-compose up` <br>
+* para hacer tirar el docker y volver hacer el build de la imagen `docker-compose down` después `docker-compose build --no-cache` y finalmente `docker-compose up`
 
 # LOCAL
 ## Proyecto EstComp
