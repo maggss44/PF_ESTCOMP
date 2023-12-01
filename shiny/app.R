@@ -27,13 +27,26 @@ ui <- fluidPage(
     ),
     mainPanel(
       # Resultado de la predicción
-      verbatimTextOutput("prediction")
+      verbatimTextOutput("prediction"),
+      # gráfica
+      plotOutput("distPlot")
     )
   )
 )
 
 # Define el servidor
 server <- function(input, output) {
+  # gráfica
+  output$distPlot <- renderPlot({
+    resp <- GET('web:8080/energy_dist')
+    data <- fromJSON(content(resp))
+    # draw the histogram with the specified number of bins
+    hist(data, breaks = 20, col = 'darkgray', border = 'white',
+          main = 'Energy Dist')
+
+    })
+
+
   observeEvent(input$predictButton, {
     # Crear el cuerpo de la solicitud con los datos ingresados por el usuario
     req_body <- list(
