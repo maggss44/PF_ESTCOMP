@@ -23,7 +23,7 @@ RUN apt-get update && \
 #RUN Rscript -e 'install.packages("renv")'
 #RUN Rscript -e 'renv::restore()'
 RUN R -e 'install.packages("tidyverse")'
-RUN R -e 'install.packages(c("httr"))'
+RUN R -e 'install.packages("httr")'
 
 COPY . app/
 # expose port
