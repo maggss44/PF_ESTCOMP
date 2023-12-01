@@ -5,7 +5,7 @@ library(dplyr)
 library(RPostgreSQL)
 
 model <- readRDS("modelo_entrenado.rds")
-dotenv::load_dot_env(file='../.env')
+# dotenv::load_dot_env(file='.env')
 #* @apiTitle RF API
 #* @apiDescription Plumber API for "Monitore de Manufactura"
 

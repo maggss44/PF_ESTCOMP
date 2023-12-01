@@ -10,11 +10,17 @@ services:
       - 5432:5432
   web:
     build: ./api
+    env_file:
+      - ".env"
     ports:
       - 8080:8080
+    depends_on:
+      - "db"
   shiny: 
     build: ./shiny
     ports:
       - 5000:4999
+    depends_on:
+      - "web"
 volumes:
   pg_api:
