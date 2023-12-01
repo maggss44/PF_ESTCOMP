@@ -21,6 +21,6 @@ services:
     ports:
       - 5000:4999
     depends_on:
-      - "web"
+      - "db"
 volumes:
   pg_api:

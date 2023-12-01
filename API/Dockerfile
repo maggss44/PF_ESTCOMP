@@ -7,4 +7,4 @@ COPY . /app
 # port
 EXPOSE 8080
 # Run plumber
-CMD ["sh", "-c", "Rscript /app/import_date.R && Rscript /app/plumber.R"]
+CMD ["Rscript", "/app/import_data.R"]

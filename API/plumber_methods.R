@@ -44,6 +44,8 @@ function(tool, cutting_depth_ai, tool_diameter_d, diameter_ae, feed_vel_f,
 
 #* @get /energy_dist
 function(){
+  print("CHECK ENV VARIABLES")
+  print(Sys.getenv("DB_HOST"))
   con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
                         host = Sys.getenv("DB_HOST"),
                         user = Sys.getenv("DB_USER"),
