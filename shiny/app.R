@@ -26,14 +26,30 @@ ui <- fluidPage(
       actionButton("predictButton", "Predict")
     ),
     mainPanel(
+      h1("Manufactura"),
       # Resultado de la predicción
-      verbatimTextOutput("prediction")
+      h3("predicción"),
+      verbatimTextOutput("prediction"),
+      # gráfica
+      h3("Energía"),
+      plotOutput("distPlot")
     )
   )
 )
 
 # Define el servidor
 server <- function(input, output) {
+  # gráfica
+  output$distPlot <- renderPlot({
+    response <- GET('http://web:8080/energy_dist', encode = "json") # web as a service in docker
+    data <- unlist(content(response,"parsed"))
+    # draw the histogram with the specified number of bins
+    hist(data, breaks = 30, col = 'darkgray', border = 'white',
+          main = 'Energy Dist')
+
+    })
+
+
   observeEvent(input$predictButton, {
     # Crear el cuerpo de la solicitud con los datos ingresados por el usuario
     req_body <- list(
@@ -52,7 +68,7 @@ server <- function(input, output) {
     )
     
     # Realizar la solicitud POST a la API Plumber
-    response <- POST("web:8080/energy", body = req_body, encode = "json")
+    response <- POST("http://web:8080/energy", body = req_body, encode = "json")
     
     # Obtener y mostrar la respuesta
     if (http_status(response)$category == "Success") {

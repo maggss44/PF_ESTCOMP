@@ -1,10 +1,13 @@
 library(plumber)
 library(randomForest)
+library(dbplyr)
+library(dplyr)
+library(RPostgreSQL)
 
 model <- readRDS("modelo_entrenado.rds")
-
+# dotenv::load_dot_env(file='.env')
 #* @apiTitle RF API
-#* @apiDescription Plumber API for Random Forest model to predict energy required given the parameters given.
+#* @apiDescription Plumber API for "Monitore de Manufactura"
 
 
 #* Returns the expected value of the energy for a set of given machining parameters
@@ -37,4 +40,18 @@ function(tool, cutting_depth_ai, tool_diameter_d, diameter_ae, feed_vel_f,
   )
   prediction <- predict(model, new_data)
   return(prediction)
+}
+
+#* Returns the expected historical energy
+#* @get /energy_dist
+function(){
+  con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
+                        host = "db", # db as a service in Docker
+                        user = Sys.getenv("DB_USER"),
+                        password = Sys.getenv("DB_PASSWORD")
+  )
+  # read DB
+  df <- tbl(con, in_schema("public", "monitoreo"))
+  energy <- df %>% select(energy) %>% collect() 
+  return(energy$energy)
 }
