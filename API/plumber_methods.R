@@ -42,10 +42,11 @@ function(tool, cutting_depth_ai, tool_diameter_d, diameter_ae, feed_vel_f,
   return(prediction)
 }
 
+#* Returns the expected historical energy
 #* @get /energy_dist
 function(){
   con <- DBI::dbConnect(RPostgreSQL::PostgreSQL(),
-                        host = Sys.getenv("DB_HOST"),
+                        host = "db", # db as a service in Docker
                         user = Sys.getenv("DB_USER"),
                         password = Sys.getenv("DB_PASSWORD")
   )

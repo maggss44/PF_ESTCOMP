@@ -41,7 +41,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   # gráfica
   output$distPlot <- renderPlot({
-    response <- GET('web:8080/energy_dist', encode = "json")
+    response <- GET('http://web:8080/energy_dist', encode = "json") # web as a service in docker
     data <- unlist(content(response,"parsed"))
     # draw the histogram with the specified number of bins
     hist(data, breaks = 30, col = 'darkgray', border = 'white',
@@ -68,7 +68,7 @@ server <- function(input, output) {
     )
     
     # Realizar la solicitud POST a la API Plumber
-    response <- POST("web:8080/energy", body = req_body, encode = "json")
+    response <- POST("http://web:8080/energy", body = req_body, encode = "json")
     
     # Obtener y mostrar la respuesta
     if (http_status(response)$category == "Success") {
