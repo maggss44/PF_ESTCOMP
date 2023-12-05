@@ -1,5 +1,8 @@
 # INIT
-Para abrir la aplicación correr `docker-compose up` en terminal.
+
+Para abrir la aplicación correr en terminal:
+1. `Rscript data/create_csv.R` 
+2. `docker-compose up`.
 
 # Proyecto de Predicción de Consumo de Energía en Cortes de Maquinaria
 ### Objetivo del Proyecto
