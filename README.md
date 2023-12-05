@@ -4,6 +4,16 @@ Para abrir la aplicación correr en terminal:
 1. `Rscript data/create_csv.R` 
 2. `docker-compose up`.
 
+# Integrantes del equipo:
+
+| Nombre | CU | Github |
+|--------------|--------------|--------------|
+| Lauro Reyes Rosas  | 214532    | LauShang    |
+| Claudia Ximena Paz Cendejas | 214570 | XimenaPaz22    |
+| Carlos Guillermo Mayorga Tapia | 149617    | maggss44    |
+| Thomas Martin Rudolf | 169296 | ThMRudolf |
+
+
 # Proyecto de Predicción de Consumo de Energía en Cortes de Maquinaria
 ### Objetivo del Proyecto
 
